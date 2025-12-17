@@ -111,7 +111,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
   ["telescope.nvim"] = {
-    config = { "\27LJ\2\nÙ\2\0\0\b\0\15\0\0236\0\0\0006\2\1\0'\3\2\0B\0\3\3\14\0\0\0X\2\1ÄK\0\1\0009\2\3\0015\4\v\0005\5\4\0005\6\5\0=\6\6\0055\6\b\0005\a\a\0=\a\t\6=\6\n\5=\5\f\4B\2\2\0016\2\0\0009\4\r\1'\5\14\0B\2\3\1K\0\1\0\bfzf\19load_extension\rdefaults\1\0\1\rdefaults\0\rmappings\6i\1\0\1\6i\0\1\0\3\n<C-j>\24move_selection_next\n<C-q>!send_to_qflist + open_qflist\n<C-k>\28move_selection_previous\17path_display\1\2\0\0\nsmart\1\0\4\17path_display\0\20selection_caret\t‚û§ \rmappings\0\18prompt_prefix\nüîç \nsetup\14telescope\frequire\npcall\0" },
+    config = { "\27LJ\2\nJ\0\1\4\1\4\0\t-\1\0\0009\1\0\1\18\3\0\0B\1\2\0016\1\1\0009\1\2\1'\3\3\0B\1\2\1K\0\1\0\2¿\ncopen\bcmd\bvim\19send_to_qflist∆\3\1\0\v\0\24\0%6\0\0\0006\2\1\0'\3\2\0B\0\3\3\14\0\0\0X\2\1Ä2\0\29Ä6\2\1\0'\4\3\0B\2\2\0023\3\4\0009\4\5\0015\6\20\0005\a\6\0005\b\a\0=\b\b\a5\b\15\0005\t\n\0009\n\t\2=\n\v\t9\n\f\2=\n\r\t=\3\14\t=\t\16\b5\t\17\0=\3\14\t=\t\18\b=\b\19\a=\a\21\6B\4\2\0016\4\0\0009\6\22\1'\a\23\0B\4\3\0012\0\0ÄK\0\1\0K\0\1\0\bfzf\19load_extension\rdefaults\1\0\1\rdefaults\0\rmappings\6n\1\0\1\n<C-q>\0\6i\1\0\2\6i\0\6n\0\n<C-q>\n<C-k>\28move_selection_previous\n<C-j>\1\0\3\n<C-k>\0\n<C-q>\0\n<C-j>\0\24move_selection_next\17path_display\1\2\0\0\nsmart\1\0\4\17path_display\0\18prompt_prefix\nüîç \rmappings\0\20selection_caret\t‚û§ \nsetup\0\22telescope.actions\14telescope\frequire\npcall\0" },
     loaded = true,
     path = "/Users/n45371/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
@@ -119,14 +119,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\2\nJ\0\1\4\1\4\0\t-\1\0\0009\1\0\1\18\3\0\0B\1\2\0016\1\1\0009\1\2\1'\3\3\0B\1\2\1K\0\1\0\2¿\ncopen\bcmd\bvim\19send_to_qflist∆\3\1\0\v\0\24\0%6\0\0\0006\2\1\0'\3\2\0B\0\3\3\14\0\0\0X\2\1Ä2\0\29Ä6\2\1\0'\4\3\0B\2\2\0023\3\4\0009\4\5\0015\6\20\0005\a\6\0005\b\a\0=\b\b\a5\b\15\0005\t\n\0009\n\t\2=\n\v\t9\n\f\2=\n\r\t=\3\14\t=\t\16\b5\t\17\0=\3\14\t=\t\18\b=\b\19\a=\a\21\6B\4\2\0016\4\0\0009\6\22\1'\a\23\0B\4\3\0012\0\0ÄK\0\1\0K\0\1\0\bfzf\19load_extension\rdefaults\1\0\1\rdefaults\0\rmappings\6n\1\0\1\n<C-q>\0\6i\1\0\2\6i\0\6n\0\n<C-q>\n<C-k>\28move_selection_previous\n<C-j>\1\0\3\n<C-k>\0\n<C-q>\0\n<C-j>\0\24move_selection_next\17path_display\1\2\0\0\nsmart\1\0\4\17path_display\0\18prompt_prefix\nüîç \rmappings\0\20selection_caret\t‚û§ \nsetup\0\22telescope.actions\14telescope\frequire\npcall\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\nƒ\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\ffilters\1\0\1\rdotfiles\1\rrenderer\1\0\1\16group_empty\2\tview\1\0\1\nwidth\3\30\1\0\4\rrenderer\0\tview\0\ffilters\0\fsort_by\19case_sensitive\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-try_loadstring("\27LJ\2\nÙ\2\0\0\b\0\15\0\0236\0\0\0006\2\1\0'\3\2\0B\0\3\3\14\0\0\0X\2\1ÄK\0\1\0009\2\3\0015\4\v\0005\5\4\0005\6\5\0=\6\6\0055\6\b\0005\a\a\0=\a\t\6=\6\n\5=\5\f\4B\2\2\0016\2\0\0009\4\r\1'\5\14\0B\2\3\1K\0\1\0\bfzf\19load_extension\rdefaults\1\0\1\rdefaults\0\rmappings\6i\1\0\1\6i\0\1\0\3\n<C-j>\24move_selection_next\n<C-q>!send_to_qflist + open_qflist\n<C-k>\28move_selection_previous\17path_display\1\2\0\0\nsmart\1\0\4\17path_display\0\20selection_caret\t‚û§ \rmappings\0\18prompt_prefix\nüîç \nsetup\14telescope\frequire\npcall\0", "config", "telescope.nvim")
-time([[Config for telescope.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

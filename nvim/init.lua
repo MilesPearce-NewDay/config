@@ -6,6 +6,7 @@
 local ensure_packer = function()
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+
 if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
@@ -36,6 +37,36 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.opt.shiftwidth = 4
     vim.opt.softtabstop = 4
     vim.opt.wrap = false
+    vim.opt.splitright = true
+    vim.opt.splitbelow = false
+    vim.opt.cursorline = true   -- puts a line on the cursor
+    vim.opt.termguicolors = true
+    vim.opt.background = "dark"   -- forces colorschemes to default to dark
+
+
+
+    local function map_option_key(key, result)
+        vim.api.nvim_set_keymap(
+            "i",            -- insert mode
+            "<A-" .. key .. ">",  -- Alt / Option key
+            result,
+            { noremap = true, silent = true }
+        )
+        end
+
+    map_option_key("1", "!")
+    map_option_key("2", "@")
+    map_option_key("3", "#")
+    map_option_key("4", "$")
+    map_option_key("5", "€")
+    map_option_key("6", "¬")
+    map_option_key("7", "{")
+    map_option_key("8", "}")
+    map_option_key("9", "[")
+    map_option_key("0", "]")
+    map_option_key("-", "_")
+    map_option_key("`", "`")
+    map_option_key("'", "'")
 
     -- ============================================================
     --  PACKER: PLUGINS
