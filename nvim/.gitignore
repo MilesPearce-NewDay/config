@@ -1,0 +1,13 @@
+# Ignore swap files, if there are any
+*.swp
+*.swo
+
+# Ignore netrw history
+.netrwhist
+
+# I guess I should ignore this plugins directory, since its going to be filled automatically
+plugin/
+
+# Ignore jukits folder if that turns up 
+.jukit/
+
