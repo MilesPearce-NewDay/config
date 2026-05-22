@@ -19,10 +19,13 @@ vim.opt.rtp:prepend(lazypath)
 -- configure the plugins
 return require("lazy").setup({
 	spec = {
-	-- import local plugins
+	-- Add LazyVim and import its plugin specs
+	{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
+	-- import local plugins (overrides / additions)
 	{ import = "plugins" },
 	{ import = "plugins.lsp" }, -- for mason
 	},
 
-	-- performance: disable some runtime plugins if desired (keep defaults)
+	-- Keep defaults lazy-loaded; override in individual plugin specs if needed
+	defaults = { lazy = true },
 })
