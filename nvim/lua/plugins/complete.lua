@@ -11,7 +11,12 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
       "zbirenbaum/copilot.lua",
-      "zbirenbaum/copilot-cmp",
+      {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+          require('copilot_cmp').setup()
+        end,
+      },
     },
     config = function()
       local cmp = require('cmp')
@@ -53,12 +58,6 @@ return {
           { name = 'path' },
         }),
       })
-
-      -- Setup copilot-cmp if available
-      pcall(function()
-        local copilot_cmp = require('copilot_cmp')
-        copilot_cmp.setup{}
-      end)
     end,
   },
 }
