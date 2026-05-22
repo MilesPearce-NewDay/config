@@ -1,27 +1,57 @@
 return {
-	"saghen/blink.cmp",
-	version = "*",
-	opts = {
-		completion = {
-			accept = {
-				-- What is the equivalent for matching parens, quotes, etc?
-				auto_brackets = {
-					enabled = false,
-				},
-			},
-			trigger = {
-				show_on_keyword = false,
-				show_on_trigger_character = false,
-			},
-			menu = { auto_show = false }, -- never show automatically
-		},
-		keymap = {
-			preset = "none", -- define everything yourself
-			["<C-Space>"] = { "show", "fallback" },
-			["<C-y>"] = { "accept" },
-			["<C-e>"] = { "cancel", "fallback" },
-			["<C-n>"] = { "select_next", "fallback" },
-			["<C-p>"] = { "select_prev", "fallback" },
-		},
-	},
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets",
+      "zbirenbaum/copilot.lua",
+      "zbirenbaum/copilot-cmp",
+    },
+    config = function()
+      local cmp = require('cmp')
+      local luasnip = require('luasnip')
+
+      require('luasnip.loaders.from_vscode').lazy_load()
+
+      cmp.setup({
+        snippet = {
+          expand = function(args) luasnip.lsp_expand(args.body) end,
+        },
+        mapping = cmp.mapping.preset.insert({
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
+          ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+          ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+        }),
+        sources = cmp.config.sources({
+          { name = 'copilot' },
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'buffer' },
+          { name = 'path' },
+        }),
+      })
+    end,
+  },
 }

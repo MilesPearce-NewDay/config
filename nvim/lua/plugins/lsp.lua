@@ -39,9 +39,8 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 
-			-- Swap this out for blink/cmp equivalent when you add a completion plugin
-			local capabilities = require("blink.cmp").get_lsp_capabilities()
-			-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+			-- Use nvim-cmp capabilities for LSP
+			local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 			-- All server configs live here: name -> setup opts
 			-- Empty table = setup({}) with just capabilities
