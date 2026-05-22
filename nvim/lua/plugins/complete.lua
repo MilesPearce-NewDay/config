@@ -1,6 +1,7 @@
 return {
   {
     "hrsh7th/nvim-cmp",
+    enabled = true,
     event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -52,6 +53,12 @@ return {
           { name = 'path' },
         }),
       })
+
+      -- Setup copilot-cmp if available
+      pcall(function()
+        local copilot_cmp = require('copilot_cmp')
+        copilot_cmp.setup{}
+      end)
     end,
   },
 }
