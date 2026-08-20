@@ -1,22 +1,32 @@
 #!/usr/bin/env bash
 set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-backup(){ if [ -e "$1" ] && [ ! -L "$1" ]; then mv "$1" "$1.bak.$(date +%s)"; fi }
+TARGET="${1:-$HOME}"
 
-# Ensure ~/.config exists
-mkdir -p "$HOME/.config"
+# Ensure stow is installed
+if ! command -v stow >/dev/null 2>&1; then
+  echo "GNU Stow not found, attempting install..."
+  if command -v apt-get >/dev/null 2>&1; then
+    sudo apt-get update -y && sudo apt-get install -y stow
+  elif command -v brew >/dev/null 2>&1; then
+    brew install stow
+  elif command -v conda >/dev/null 2>&1; then
+    conda install -y -c conda-forge stow
+  else
+    echo "Could not find a package manager to install stow. Install it manually." >&2
+    exit 1
+  fi
+fi
 
-# Link nvim
-backup "$HOME/.config/nvim"
-ln -sfn "$REPO_ROOT/nvim" "$HOME/.config/nvim"
+cd "$REPO_ROOT"
 
-# Link tmux conf to ~/.tmux.conf
-backup "$HOME/.tmux.conf"
-ln -sfn "$REPO_ROOT/tmux/tmux.conf" "$HOME/.tmux.conf"
+# Each top-level directory here is a stow "package" whose internal layout
+# mirrors its final path relative to $TARGET (e.g. nvim/.config/nvim/...).
+for pkg in */; do
+  pkg="${pkg%/}"
+  [ "$pkg" = "scripts" ] && continue
+  echo "Stowing $pkg -> $TARGET"
+  stow --restow --target="$TARGET" "$pkg"
+done
 
-# Link kitty
-mkdir -p "$HOME/.config/kitty"
-backup "$HOME/.config/kitty/kitty.conf"
-ln -sfn "$REPO_ROOT/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
-
-echo "Bootstrap complete. Existing files moved to *.bak.TIMESTAMP when present."
+echo "Bootstrap complete."
